@@ -3,26 +3,44 @@
 	$('#student_list').append("<%= j(render partial: 'list', locals: {student: @student} )%>")
 	$('#new_student')[0].reset()
 <% else %>
-	// $('#error_explanation').css('display', 'block')
- // 	$('#error_explanation').empty().append('<h2 id="h2_data"><%= "#{@student.errors.count} prohibited this student from being saved:</h2>".html_safe %> ')
- //  $('#h2_data').after("<ul id='ul_list'> </ul>")
- //  	<% @student.errors.full_messages.each do |message| %>
- //  		$('#ul_list').append("<li><%= message %></li>");
- //   	<% end %>
-
+  <% if (@student.errors["surname"][0]) %>
   $("#surnameBlock").html('<div class="notice"><%=escape_javascript(@errorsurname[0])%></div>');
   $("#surnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+  <% else %>
+  $("#surnameBlock").hide('<div class="notice"><%=escape_javascript(@errorsurname[0])%></div>');
+  $("#surnameBlock:contains(.)").closest(".form-group").removeClass("has-error");
+  <% end %>
 
+  <% if (@student.errors["firstname"][0]) %>
   $("#firstnameBlock").html('<div class="notice"><%=escape_javascript(@errorfirstname[0])%></div>');
   $("#firstnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+  <% else %>  
+  $("#firstnameBlock").hide('<div class="notice"><%=escape_javascript(@errorfirstname[0])%></div>');
+  $("#firstnameBlock:contains(.)").closest(".form-group").removeClass("has-error");
+  <% end %>
 
+  <% if (@student.errors["lastname"][0]) %>
   $("#lastnameBlock").html('<div class="notice"><%=escape_javascript(@errorlastname[0])%></div>');
   $("#lastnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+  <% else %>
+  $("#lastnameBlock").hide('<div class="notice"><%=escape_javascript(@errorlastname[0])%></div>');
+  $("#lastnameBlock:contains(.)").closest(".form-group").removeClass("has-error");
+  <% end %>
 
+  <% if (@student.errors["div"][0]) %>
   $("#divBlock").html('<div class="notice"><%=escape_javascript(@errordiv[0])%></div>');
   $("#divBlock:contains(.)").closest(".form-group").addClass("has-error");
+  <% else %>
+  $("#divBlock").hide('<div class="notice"><%=escape_javascript(@errordiv[0])%></div>');
+  $("#divBlock:contains(.)").closest(".form-group").removeClass("has-error");
+  <% end %>
 
+  <% if (@student.errors["mobileno"][0]) %>
   $("#mobilenoBlock").html('<div class="notice"><%=escape_javascript(@errormobileno[0])%></div>');
   $("#mobilenoBlock:contains(.)").closest(".form-group").addClass("has-error");
+  <% else %>
+  $("#mobilenoBlock").hide('<div class="notice"><%=escape_javascript(@errormobileno[0])%></div>');
+  $("#mobilenoBlock:contains(.)").closest(".form-group").removeClass("has-error");
+  <% end %>
 
  <% end %>
