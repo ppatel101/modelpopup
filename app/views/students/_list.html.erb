@@ -1,0 +1,7 @@
+	<tr id="student-js-<%= student.id %>">
+	<td><%= student.firstname %></td>
+	<td><%= link_to 'Edit', edit_student_path(student), remote: true, id: 'edit_link', class: "btn3" %> | 
+			<%= link_to 'show', student_path(student), remote: true ,id: 'show_link', class: "btn2"%> |
+			<%= link_to 'Delete', student_path(student), remote: true , method: :delete, data: { confirm: "Are you sure?" } ,id: 'destroy_link' , class: "btn1"%>
+	</td>		
+</tr>

@@ -1,0 +1,23 @@
+<% if @student.persisted? %>
+	$('#studentAdd').modal('show');
+	$('#student_list').append("<%= j(render partial: 'list', locals: {student: @student} )%>")
+	$('#new_student')[0].reset()
+<% else %>
+	// $('#error_explanation').css('display', 'block')
+ // 	$('#error_explanation').empty().append('<h2 id="h2_data"><%= "#{@student.errors.count} prohibited this student from being saved:</h2>".html_safe %> ')
+ //  $('#h2_data').after("<ul id='ul_list'> </ul>")
+ //  	<% @student.errors.full_messages.each do |message| %>
+ //  		$('#ul_list').append("<li><%= message %></li>");
+ //   	<% end %>
+
+ $("#surnameBlock").append('<div class="notice"><%=escape_javascript(@errorsurname[0])%></div>');
+ $("#surnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+ $("#firstnameBlock").append('<div class="notice"><%=escape_javascript(@errorfirstname[0])%></div>');
+ $("#firstnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+ $("#lastnameBlock").append('<div class="notice"><%=escape_javascript(@errorlastname[0])%></div>');
+ $("#lastnameBlock:contains(.)").closest(".form-group").addClass("has-error");
+ $("#divBlock").append('<div class="notice"><%=escape_javascript(@errordiv[0])%></div>');
+ $("#divBlock:contains(.)").closest(".form-group").addClass("has-error");
+ $("#mobilenoBlock").append('<div class="notice"><%=escape_javascript(@errormobileno[0])%></div>');
+ $("#mobilenoBlock:contains(.)").closest(".form-group").addClass("has-error");
+ <% end %>

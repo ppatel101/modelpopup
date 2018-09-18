@@ -1,0 +1,61 @@
+<div class="modal fade" id="studentAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Student</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(student,:html=>{remote: true}) do |form|%>
+          <div id="error_explanation" style='display: none;'> 
+            <% if student.errors.any? %>
+              <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+              <ul>
+              <% student.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :SurName %>
+            <%= form.text_field :surname , class: "form-control" , placeholder: "Surname"  %>
+            <span id = "surnameBlock" class="help-block"></span>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :FirstName %>
+            <%= form.text_field :firstname , class: "form-control", placeholder: "First name" %>
+            <span id = "firstnameBlock" class="help-block"></span>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :LastName %>
+            <%= form.text_field :lastname , class: "form-control" , placeholder: "Lastname"   %>
+            <span id = "lastnameBlock" class="help-block"></span>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :Div   %>
+            <%= form.text_field :div , class: "form-control" , placeholder: "Division"   %>
+            <span id = "divBlock" class="help-block"></span>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :Mobileno %>
+            <%= form.text_field :mobileno , class: "form-control" ,  placeholder: "Mobile no" %>
+            <span id = "mobilenoBlock" class="help-block"></span>
+          </div>
+
+        <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+        <%= form.button :Save, class: "btn btn-success btn-lg"%>
+        
+        </div>
+        <%end%>      
+      </div>  
+    </div>
+  </div>
+</div>  
