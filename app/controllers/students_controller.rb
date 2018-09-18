@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
         format.json { render :show, status: :created, location: @student }
         format.js{ }
       else
-        format.html { render :new }
+        #format.html { render :new }
         # format.json { render json: @student.errors, status: :unprocessable_entity }
         format.js{ }
         @student.errors.any?

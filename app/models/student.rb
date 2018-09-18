@@ -1,10 +1,20 @@
 class Student < ApplicationRecord
-	#validates :surname, :firstname , :lastname , :div , :mobileno , presence: true 
-  validates :surname, :presence => {message: "Surname cannot be blank."},  :length => { :minimum => 2, message: "surname is too short."}
-  validates :firstname, :presence => {message: "firstname content cannot be blank."}, :length => { :minimum => 2, message: "firstname is too short."}
-  validates :lastname, :presence => {message: "lastname cannot be blank."},  :length => { :minimum => 2, message: "lastname is too short."}
-  validates :div, :presence => {message: "Division cannot be blank."},  :length => { :maximum => 1, message: "Division is too long."}
-  validates :mobileno, :presence => {message: "mobileno cannot be blank."},  :length => { :is => 10, message: "Mobile No is onlu 10 diigit."}
+  validates :surname, :presence => {message: "Surname cannot be blank."}, 
+            :length => { :minimum => 3, message: "surname is too short."}
+
+  validates :firstname, :presence => {message: "Firstname cannot be blank."},
+            :length => { :minimum => 3, message: "firstname is too short."}
+
+  validates :lastname, :presence => {message: "Lastname cannot be blank."},
+            :length => { :minimum => 3, message: "lastname is too short."}
+
+  validates :div, :presence => {message: "Division cannot be blank."}, 
+            inclusion: { in: %w(A B) , message: "Division only A or B." },
+            :length => { :maximum => 1, message: "Division allowed only A or B."}
+
+  validates :mobileno, :presence => {message: "Mobile No cannot be blank."}, 
+            numericality: { only_integer: true , message: "Mobile No is only diigit."} ,
+            :length => { :is => 10, message: "Mobile No is only 10 diigit."}
 
   def self.to_csv(options = {})
   	CSV.generate(options) do |csv|
